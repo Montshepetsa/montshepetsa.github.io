@@ -3,67 +3,140 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Montshe Petsa</title>
-    <meta name="description" content="Personal site for Montshe Petsa" />
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f5f7ff;
-        --card: #ffffff;
-        --text: #0f172a;
-        --muted: #475569;
-        --accent: #0ea5e9;
-      }
-
-      * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        background: radial-gradient(circle at 15% 20%, #dbeafe 0%, var(--bg) 45%, #e2e8f0 100%);
-        color: var(--text);
-      }
-
-      main {
-        width: min(720px, calc(100% - 2rem));
-        background: var(--card);
-        border: 1px solid #cbd5e1;
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-      }
-
-      h1 {
-        margin: 0 0 0.5rem;
-        font-size: clamp(2rem, 5vw, 2.8rem);
-        line-height: 1.1;
-      }
-
-      p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      a:hover { text-decoration: underline; }
-    </style>
+    <title>Montshepetsa</title>
+    <meta
+      name="description"
+      content="GitHub-inspired portfolio for Montshe Petsa with projects and posts."
+    />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="https://media.licdn.com/dms/image/v2/D4D03AQGPCshgtK6QbQ/profile-displayphoto-shrink_800_800/B4DZT.RqWwG8Ac-/0/1739432833837?e=1773273600&v=beta&t=kNZfUG3i3EB_5L9VWugBvKS4DEu_AIdXU5g54_spVx0"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <main>
-      <h1>Fresh start.</h1>
-      <p>
-        This GitHub Pages site is now reset and ready to rebuild.
-        Edit <code>index.html</code> and push to <code>main</code> to publish.
-      </p>
-    </main>
+    <canvas id="matrixBg" aria-hidden="true"></canvas>
+    <canvas id="starsBg" aria-hidden="true"></canvas>
+    <div class="shell">
+      <nav class="quick-nav" aria-label="Section navigation">
+        <a class="focus-ring" href="#about"><span class="nav-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 8h1v5.5A1.5 1.5 0 0 0 4.5 15h2A1.5 1.5 0 0 0 8 13.5V11h0v2.5A1.5 1.5 0 0 0 9.5 15h2a1.5 1.5 0 0 0 1.5-1.5V8h1a.5.5 0 0 0 .354-.854l-6-6Z"/></svg>Overview</span></a>
+        <a class="focus-ring" href="#experience"><span class="nav-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2A1.75 1.75 0 0 0 0 3.75v8.5C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0 0 16 12.25v-8.5A1.75 1.75 0 0 0 14.25 2h-3.5a.75.75 0 0 1-.75-.75A1.25 1.25 0 0 0 8.75 0h-1.5A1.25 1.25 0 0 0 6 1.25a.75.75 0 0 1-.75.75h-3.5Z"/></svg>Experience</span></a>
+        <a class="focus-ring" href="#music"><span class="nav-label"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Music</span></a>
+        <a class="focus-ring" href="#blog"><span class="nav-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 0A1.75 1.75 0 0 0 0 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0 0 16 14.25V1.75A1.75 1.75 0 0 0 14.25 0H1.75Zm0 1h12.5a.75.75 0 0 1 .75.75V4H1V1.75A.75.75 0 0 1 1.75 1ZM1 5h14v9.25a.75.75 0 0 1-.75.75H1.75a.75.75 0 0 1-.75-.75V5Z"/></svg>Blog</span></a>
+      </nav>
+
+      <div class="layout">
+        <aside class="sidebar panel reveal" aria-label="Profile sidebar">
+          <div class="avatar-wrap">
+            <img id="avatar" class="avatar" alt="Profile photo" />
+            <div id="avatarFallback" class="avatar-fallback" aria-hidden="true">MP</div>
+          </div>
+          <h1 id="displayName" class="display-name"></h1>
+          <p id="username" class="username"></p>
+          <p id="bio" class="bio"></p>
+
+          <p id="stats" class="stats"></p>
+
+          <p id="location" class="meta-line"></p>
+          <p id="phone" class="meta-line"></p>
+          <p id="email" class="meta-line"></p>
+
+          <ul id="profileLinks" class="links"></ul>
+        </aside>
+
+        <main class="content">
+          <section id="about" class="section panel reveal" aria-labelledby="aboutTitle">
+            <p class="eyebrow">Montshepetsa / README.md</p>
+            <h2 id="aboutTitle">Full-Stack Engineer with AWS production depth.</h2>
+            <div class="about-copy">
+              <p>
+                Full-stack software engineer with over six years of experience building and maintaining production web
+                and mobile systems. Strong backend focus using Node.js, TypeScript, and PostgreSQL, with hands-on AWS
+                infrastructure experience across Lambda, EC2, ECS, and RDS.
+              </p>
+              <ul>
+                <li>Experienced in production deployments, release validation, and incident support rotation.</li>
+                <li>Managed cloud monitoring and live-issue resolution using CloudWatch.</li>
+                <li>Strong collaboration across frontend, backend, and infrastructure concerns.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="skills" class="section panel reveal" aria-labelledby="skillsTitle">
+            <div class="section-head">
+              <h3 id="skillsTitle"><span class="title-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 0a.5.5 0 0 1 .5.5V2h2V.5a.5.5 0 0 1 1 0V2h1.5a.5.5 0 0 1 .5.5V4h1.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H14v2h.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H13V14a.5.5 0 0 1-.5.5H11v1a.5.5 0 0 1-1 0v-1H8v1a.5.5 0 0 1-1 0v-1H5.5A.5.5 0 0 1 5 14v-1.5H3.5a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5H4v-2h-.5a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5H5V2.5a.5.5 0 0 1 .5-.5H7V.5a.5.5 0 0 1 .5-.5h-1Zm-.5 3v1.5a.5.5 0 0 1-.5.5H4v1h.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H4v1h1.5a.5.5 0 0 1 .5.5V13h5v-1.5a.5.5 0 0 1 .5-.5H13v-1h-.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5H13V5h-1.5a.5.5 0 0 1-.5-.5V3H6Z"/></svg>Core Skills</span></h3>
+              <span id="skillsCount" class="count-pill"></span>
+            </div>
+            <div id="skillsCloud" class="skills-cloud"></div>
+          </section>
+
+          <section id="experience" class="section panel reveal" aria-labelledby="experienceTitle">
+            <div class="section-head">
+              <h3 id="experienceTitle"><span class="title-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.5 1.75a.75.75 0 0 0-1.5 0V8c0 .2.08.39.22.53l3 3a.75.75 0 1 0 1.06-1.06L8.5 7.69V1.75Z"/><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm0-1.5A6.5 6.5 0 1 0 8 1.5a6.5 6.5 0 0 0 0 13Z"/></svg>Professional Experience</span></h3>
+              <span id="experienceCount" class="count-pill"></span>
+            </div>
+            <div id="experienceGrid" class="card-grid"></div>
+          </section>
+
+          <section id="music" class="section panel reveal" aria-labelledby="musicTitle">
+            <div class="section-head">
+              <h3 id="musicTitle"><span class="title-label"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Music</span></h3>
+              <span id="musicCount" class="count-pill"></span>
+            </div>
+            <p class="music-intro">
+              A CV tells you what I do; this tells you a bit of what’s in the background while I do it. Music is how I focus, unwind, and stay in the flow—so here’s a slice of what I’m listening to lately.
+            </p>
+            <div id="spotifyEmbed" class="spotify-embed-wrap"></div>
+            <div id="musicGrid" class="music-grid card-grid"></div>
+          </section>
+
+          <section id="blog" class="section panel reveal" aria-labelledby="blogTitle">
+            <div class="section-head">
+              <h3 id="blogTitle"><span class="title-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 0A1.75 1.75 0 0 0 0 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0 0 16 14.25V1.75A1.75 1.75 0 0 0 14.25 0H1.75Zm0 1h12.5a.75.75 0 0 1 .75.75V4H1V1.75A.75.75 0 0 1 1.75 1ZM1 5h14v9.25a.75.75 0 0 1-.75.75H1.75a.75.75 0 0 1-.75-.75V5Z"/></svg>Blog</span></h3>
+            </div>
+            <div class="blog-coming-soon">
+              <p class="blog-coming-soon-text">
+                <span class="blog-shimmer">Coming soon</span>
+                <span class="blog-cursor" aria-hidden="true"></span>
+              </p>
+            </div>
+          </section>
+
+          <section id="credentials" class="section panel reveal" aria-labelledby="credentialsTitle">
+            <div class="section-head">
+              <h3 id="credentialsTitle"><span class="title-label"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m8.211.5 7 3A.5.5 0 0 1 15.5 4v.5a.5.5 0 0 1-.305.46L13.5 5.7v3.55a1.75 1.75 0 0 1-.803 1.476l-4 2.5a1.75 1.75 0 0 1-1.894 0l-4-2.5A1.75 1.75 0 0 1 2 9.25V5.7L.305 4.96A.5.5 0 0 1 0 4.5V4a.5.5 0 0 1 .289-.5l7-3a1.5 1.5 0 0 1 .922 0ZM3 6.133V9.25c0 .258.133.498.352.635l4 2.5a.75.75 0 0 0 .796 0l4-2.5a.75.75 0 0 0 .352-.635V6.133l-4.289 1.838a1.5 1.5 0 0 1-1.422 0L3 6.133Z"/></svg>Education & Certifications</span></h3>
+              <span id="credentialsCount" class="count-pill"></span>
+            </div>
+            <div class="edu-wrap">
+              <article class="edu-box">
+                <h4>Education</h4>
+                <ul id="educationList" class="edu-list"></ul>
+              </article>
+              <article class="edu-box">
+                <h4>Certifications</h4>
+                <ul id="certificationsList" class="edu-list"></ul>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
